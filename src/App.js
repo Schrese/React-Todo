@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
+import { dispatch } from 'rxjs/internal/observable/range';
+import { arrayExpression } from '@babel/types';
 
 
 const data = [
@@ -41,6 +43,24 @@ class App extends Component {
     });
   };
 
+  toggleCompleted = id => {
+    this.setState({
+      tasks: this.state.tasks.map(item => {
+        if (item.id === id) {
+          return {
+            ...item, 
+            completed: !item.completed
+          };
+        } else {
+          return item;
+        }
+      })
+    });
+  }
+
+  clearCompleted = id => {
+    
+  }
 
   render() {
     return (
@@ -50,7 +70,7 @@ class App extends Component {
           <TodoForm addToDo = {this.addToDo} />
           </div>
       <div className = 'actualList'>
-        <TodoList tasks = {this.state.tasks}/>
+        <TodoList toggleCompleted = {this.toggleCompleted} tasks = {this.state.tasks}/>
         </div>
       </div>
       

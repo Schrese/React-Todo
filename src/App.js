@@ -19,8 +19,6 @@ const data = [
 
 //functions we will need (adding input to list, filter for completed = true, toggle for completed items)
 
-
-
 class App extends Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -28,26 +26,32 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      whattodo: data
+      tasks: data
     };
   }
 
   addToDo = somethingnew => {
-    const newTask = {
+    const newItem = {
       task: somethingnew, 
       id: Date.now(), 
-      purchcased: false
+      completed: false,
     };
-  
-  }
+    this.setState({
+      tasks: [...this.state.tasks, newItem]
+    });
+  };
 
 
   render() {
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-        <TodoForm />
-        <TodoList />
+      <div className = 'App'>
+        <div className = 'topPart'>
+          <h2>Welcome to your Todo App!</h2>
+          <TodoForm addToDo = {this.addToDo} />
+          </div>
+      <div className = 'actualList'>
+        <TodoList tasks = {this.state.tasks}/>
+        </div>
       </div>
       
     );

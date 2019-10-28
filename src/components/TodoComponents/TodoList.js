@@ -5,9 +5,16 @@ import Todo from './Todo';
 // feel free to change this component.js into TodoList.js
 
 const TodoList = props => {
+    console.log(props)
     return (
         <div>
-            <Todo />
+            {props.tasks.map(item => (
+            <Todo 
+                key = {item.id}
+                item = {item}
+                />
+            ))}
+           
         </div>
     )
 }

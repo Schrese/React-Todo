@@ -58,7 +58,12 @@ class App extends Component {
   }
 
   clearCompleted = () => {
-    
+    this.setState({
+      tasks: this.state.tasks.filter(item => {
+        console.log(item.completed);
+        return item.completed === false
+      })
+    })
   }
 
   render() {

@@ -25,7 +25,7 @@ class TodoForm extends Component {
         return (
             <form onSubmit = {this.submissionHandler}>
                 <label htmlFor = 'item'>New Task</label>
-                <input type = 'text' id = 'task' onChange = {this.changeHandler} value = {this.newItem}/>
+                <input type = 'text' id = 'task' onChange = {this.changeHandler} value = {this.state.newItem}/>
                 <button>+</button>
             </form>
         );

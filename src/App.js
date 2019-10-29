@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
-import { dispatch } from 'rxjs/internal/observable/range';
-import { arrayExpression } from '@babel/types';
+
 
 
 const data = [
@@ -50,7 +49,7 @@ class App extends Component {
           return {
             ...item, 
             completed: !item.completed
-          };
+          }
         } else {
           return item;
         }
@@ -58,7 +57,7 @@ class App extends Component {
     });
   }
 
-  clearCompleted = id => {
+  clearCompleted = () => {
     
   }
 
@@ -70,7 +69,7 @@ class App extends Component {
           <TodoForm addToDo = {this.addToDo} />
           </div>
       <div className = 'actualList'>
-        <TodoList toggleCompleted = {this.toggleCompleted} tasks = {this.state.tasks}/>
+        <TodoList toggleCompleted = {this.toggleCompleted} tasks = {this.state.tasks} clearCompleted = {this.clearCompleted}/>
         </div>
       </div>
       
